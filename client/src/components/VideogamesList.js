@@ -5,9 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { updatePage } from "../features/pageSlice/pageSlice";
 
 const VideogamesList = () => {
-  const page = useSelector((state) => state.videogameList.videogameList);
+  //const page = useSelector((state) => state.videogameList.videogameList);
   const list = useSelector((state) => state.videogameList.videogameList);
-  console.log(page);
+  //console.log(page);
   return (
     <div className="wrapper">
       {list.map((l) => (

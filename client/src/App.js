@@ -6,7 +6,8 @@ import ErrorPage from "./pages/ErrorPage";
 import LandingPage from "./pages/LandingPage";
 import Homepage from "./pages/Homepage";
 import GameDetails from "./pages/GameDetails";
-import NewGameInputForm from "./pages/NewGameInputForm";
+
+import AddVideoGameForm from "./pages/AddVideogameForm";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
       { path: "/", element: <LandingPage /> },
       { path: "/videogames", element: <Homepage /> },
       { path: "/details/:gameId", element: <GameDetails /> },
-      { path: "/newGame", element: <NewGameInputForm /> },
+      { path: "/addVideogameForm", element: <AddVideoGameForm /> },
     ],
   },
 ]);

@@ -38,6 +38,11 @@ const SearchBar = () => {
           Home
         </a>
       </Link>
+      <Link to="/addVideogameForm">
+        <a className="active" onClick={onClickHandlerHome}>
+          Add videogame
+        </a>
+      </Link>
       <form onSubmit={onSubmitHandler}>
         <input
           type="text"

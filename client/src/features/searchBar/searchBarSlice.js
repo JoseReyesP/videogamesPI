@@ -3,19 +3,18 @@ import { createSlice } from "@reduxjs/toolkit";
 export const searchBarSlice = createSlice({
   name: "searchBar",
   initialState: {
-    name: "",
+    searchValue: "",
   },
   reducers: {
-    updateName(state, action) {
-      state.title = action.payload;
+    updateSearchValue(state, action) {
+      state.searchValue = action.payload;
     },
-    resetName(state) {
-      state.title = "";
+    resetSearchValue(state) {
+      state.searchValue = "";
     },
   },
 });
 
-export const { updateTitle, updateDescription, resetDescription, resetTitle } =
-  userInputSlice.actions;
+export const { updateSearchValue, resetSearchValue } = searchBarSlice.actions;
 
 export default searchBarSlice.reducer;

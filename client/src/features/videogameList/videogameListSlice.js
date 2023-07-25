@@ -3,17 +3,32 @@ import { createSlice } from "@reduxjs/toolkit";
 export const videogameListSlice = createSlice({
   name: "videogameList",
   initialState: {
-    todoList: [
-      {
-        id: 0,
-        title: "test element",
-        description: "este es un elemento de prueba",
-      },
-    ],
+    videogameList: [],
+    previousList: [],
   },
-  reducers: {},
+  reducers: {
+    addVideoGame(state, action) {
+      state.videogameList.push(action.payload);
+    },
+    filtrarNombreVideoGame(state, action) {
+      state.videogameList = state.videogameList.filter(
+        (item) => item.name === action.payload
+      );
+    },
+    createBackupList(state, action) {
+      state.previousList = state.videogameList;
+    },
+    resetList(state, action) {
+      state.videogameList = state.previousList;
+    },
+  },
 });
 
-export const { addTodo, removeTodo } = todoListSlice.actions;
+export const {
+  addVideoGame,
+  filtrarNombreVideoGame,
+  createBackupList,
+  resetList,
+} = videogameListSlice.actions;
 
-export default videogameList.reducer;
+export default videogameListSlice.reducer;

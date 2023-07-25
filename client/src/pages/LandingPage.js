@@ -1,6 +1,9 @@
 import gamesImage from "../assets/images/videogame.png";
+
 import { Link } from "react-router-dom";
+
 import "../pages/LandingPage.css";
+
 const LandingPage = () => {
   return (
     <main>

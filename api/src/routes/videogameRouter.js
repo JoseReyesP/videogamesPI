@@ -8,7 +8,7 @@ const findVideogameById = require("../controllers/findVideogameById");
 const findVideogameByIdDB = require("../controllers/findVideogameByIdDB");
 const findVideogameByName = require("../controllers/findVideogameByName");
 const findVideogameByNameDB = require("../controllers/findVideogameByNameDB");
-
+const createNewVideogame = require("../controllers/createNewVideogame");
 videogameRouter.get("/", async (req, res) => {
   try {
     const { name } = req.query || "";
@@ -39,6 +39,16 @@ videogameRouter.get("/:idVideogame", async (req, res) => {
   }
 });
 
+videogameRouter.post("/", async (req, res) => {
+  try {
+    const data = req.body;
+    console.log(data);
+    const newVideogame = await createNewVideogame(data);
+    res.status(200).json(newVideogame);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
 // usersRouter.post("/", async (req, res) => {
 //   try {
 //     const name = req.body;

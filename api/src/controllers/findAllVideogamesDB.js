@@ -1,7 +1,7 @@
-const { Videogame } = require("../db");
+const { Videogame, Genres } = require("../db");
 
 const findAllVideogamesDB = async () => {
-  const videgamesDB = await Videogame.findAll();
+  const videgamesDB = await Videogame.findAll({ include: [Genres] });
   return videgamesDB;
 };
 

@@ -6,24 +6,34 @@ const findAllVideogames = require("../controllers/findAllVideogames");
 const findAllVideogamesDB = require("../controllers/findAllVideogamesDB");
 const findVideogameById = require("../controllers/findVideogameById");
 const findVideogameByIdDB = require("../controllers/findVideogameByIdDB");
+const findVideogameByName = require("../controllers/findVideogameByName");
+const findVideogameByNameDB = require("../controllers/findVideogameByNameDB");
 
 videogameRouter.get("/", async (req, res) => {
   try {
-    const apiResponse = await findAllVideogames();
-    const dbResponse = await findAllVideogamesDB();
-    console.log(dbResponse);
-    res.status(200).json(apiResponse.data.results.concat(dbResponse));
+    const { name } = req.query || "";
+    if (!name) {
+      const apiResponse = await findAllVideogames();
+      const dbResponse = await findAllVideogamesDB();
+      res.status(200).json(apiResponse.data.results.concat(dbResponse));
+    } else {
+      const apiResponse = await findVideogameByName(name);
+      const dbResponse = await findVideogameByNameDB(name);
+      console.log("respuesta api", apiResponse.data);
+      console.log("respuesta db", dbResponse);
+    }
   } catch (error) {
+    res.status(404).json({ message: "el juego no existe" });
     console.error(error.message);
   }
 });
 
 videogameRouter.get("/:idVideogame", async (req, res) => {
   try {
-    const id = req.params.idVideogame;
-    const apiResponse = await findVideogameById(id);
-    const dbResponse = await findVideogameByIdDB(id);
-    res.status(200).json(apiResponse.data.concat(dbResponse));
+    const { idVideogame } = req.params;
+    const apiResponse = await findVideogameById(idVideogame);
+    const dbResponse = await findVideogameByIdDB(idVideogame);
+    res.status(200).json([apiResponse.data, dbResponse]);
   } catch (error) {
     console.error(error.message);
   }

@@ -1,0 +1,8 @@
+div {
+  margin: 5px;
+}
+
+.sorters {
+  display: flex;
+  justify-content: flex-end;
+}

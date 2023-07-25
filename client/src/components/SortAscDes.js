@@ -1,7 +1,12 @@
 import React from "react";
 
 const SortAscDes = () => {
-  return <div>este es el sort ascendente descendente</div>;
+  return (
+    <select name="sortAscDes" id="sortAsc">
+      <option value="Ascendente">Ascendente</option>
+      <option value="Descendente">Descendente</option>
+    </select>
+  );
 };
 
 export default SortAscDes;

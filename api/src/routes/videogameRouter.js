@@ -42,11 +42,14 @@ videogameRouter.get("/:idVideogame", async (req, res) => {
 videogameRouter.post("/", async (req, res) => {
   try {
     const data = req.body;
-    console.log(data);
+    if (!data.name || !data.description) {
+      return res.status(400).json("data invalid");
+    }
     const newVideogame = await createNewVideogame(data);
     res.status(200).json(newVideogame);
   } catch (error) {
     console.error(error.message);
+    res.status(500).send(error.message);
   }
 });
 // usersRouter.post("/", async (req, res) => {
